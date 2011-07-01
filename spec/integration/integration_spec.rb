@@ -28,6 +28,7 @@ describe Mongoid::History do
       field             :body
       embedded_in       :post, :inverse_of => :comments
       track_history     :on => [:title, :body], :scope => :post, :track_create => true
+      has_and_belongs_to_many :users
     end
 
     class User
@@ -38,6 +39,7 @@ describe Mongoid::History do
       field             :email
       field             :name
       track_history     :except => [:email]
+      has_and_belongs_to_many :comments
     end
   end
   
